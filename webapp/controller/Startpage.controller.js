@@ -8,9 +8,18 @@ sap.ui.define([
 
 	return Controller.extend("sap.suite.ui.commons.demokit.tutorial.icecream.12.controller.Startpage", {
 		onInit: function() {
+			var that = this;
 			var sDataPath = jQuery.sap.getModulePath("sap.suite.ui.commons.demokit.tutorial.icecream.12.model.data", "/News.json");
 			var oModel = new JSONModel(sDataPath);
 			this.getView().setModel(oModel, "news");
+		},
+
+		assignIndicator: function(value) {
+			return value < 0 ? "Down" : "Up"
+		},
+
+		assignColor: function(value) {
+			return value < 0 ? "Error" : "Good"
 		},
 
 		getProgress: function(aNodes) {
@@ -35,6 +44,10 @@ sap.ui.define([
 				decimals: 1
 			});
 			return oFloatFormatter.format(value);
+		},
+
+		convertKToFahrenheit(value) {
+			return Math.round((value - 273.15) * 9/5 + 32);
 		},
 
 		formatJSONDate: function(date) {

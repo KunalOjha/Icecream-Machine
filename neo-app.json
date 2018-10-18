@@ -20,6 +20,14 @@
 			"description": "SAPUI5 Resources"
 		},
 		{
+			"path": "/destinations/ES5",
+			"target": {
+				"type": "destination",
+					"name": "ES5"
+					},
+			"description": "ES5 Demo Service"
+		},
+		{
 			"path": "/test-resources",
 			"target": {
 				"type": "application",

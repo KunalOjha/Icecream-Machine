@@ -73,23 +73,22 @@
 					</tileContent>
 				</GenericTile>
 				<GenericTile
-					class="sapUiTinyMarginBegin sapUiTinyMarginTop"
-					header="{i18n>startpageUserReviewsTileTitle}"
-					press="onNavToReviews">
-					<tileContent>
-						<TileContent>
-							<content>
-								<NumericContent
-									value="{
-										path: 'reviews>/UserReviews',
-										formatter: '.getEntityCount'
-									}"
-									indicator="None"
-									valueColor="Neutral" />
-							</content>
-						</TileContent>
-					</tileContent>
-				</GenericTile>
+                     class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                     header="{i18n>startpageUserReviewsTileTitle}">
+                     <tileContent>
+                         <TileContent>
+                             <content>
+                                 <NumericContent
+                                     value="{
+                                         path: 'reviews>/UserReviews',
+                                         formatter: '.getEntityCount'
+                                     }"
+                                         indicator="None"
+                                         valueColor="Neutral" />
+                             </content>
+                         </TileContent>
+                     </tileContent>
+                 </GenericTile>
 				<GenericTile
 					class="sapUiTinyMarginBegin sapUiTinyMarginTop"
 					header="{i18n>startpageTestResultsTileTitle}"
@@ -130,6 +129,50 @@
 			</layout:HorizontalLayout>
 			<Title
 				titleStyle="H2"
+				text="Dynamic Tiles"
+				class="sapUiTinyMarginBegin sapUiMediumMarginTop" />
+			<layout:HorizontalLayout>
+				<GenericTile
+					class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+					header="Weather Forecast"
+					subheader="Alexandria, VA">
+					<tileContent>
+						<TileContent 				
+							footer="{weatherInfo>/weather/0/description}">
+							<content>
+								<NumericContent 
+									value = "{
+											path: 'weatherInfo>/main/temp',
+											formatter: '.convertKToFahrenheit'
+										}"
+									scale="°F"
+									icon="sap-icon://temperature"
+									truncateValueTo="5"
+								/>
+							</content>
+						</TileContent>
+					</tileContent>
+				</GenericTile>
+				<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Live Market Data" subheader="{stockinfo>/symbol}">
+					<TileContent footer="{stockinfo>/latestTime}">
+						<NumericContent 
+							value="{stockinfo>/change}" 
+							valueColor="{
+										path: 'stockinfo>/change',
+										formatter : '.assignColor'
+										}"
+							indicator="{
+										path: 'stockinfo>/change',
+										formatter : '.assignIndicator'
+										}"
+							scale="$"
+							animateTextChange="true" 
+							truncateValueTo="5"/>
+					</TileContent>
+				</GenericTile>
+			</layout:HorizontalLayout>
+			<Title
+				titleStyle="H2"
 				text="{i18n>startpageLinksGroupTitle}"
 				class="sapUiTinyMarginBegin sapUiMediumMarginTop" />
 			<layout:HorizontalLayout allowWrapping="true">
@@ -142,6 +185,7 @@
 					header="{i18n>startpageLineTile2Title}"
 					mode="LineMode"
 					class="sapUiTinyMarginBegin" />
+					
 			</layout:HorizontalLayout>
 		</layout:VerticalLayout>
 	</Page>
